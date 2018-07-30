@@ -1,5 +1,7 @@
 floppy: boot kernel shell
-	./source/makepfs.py out/portland.img part/boot.bin part/fs/*
+	./source/makepfs.py part/portland.pfs part/boot.bin part/fs/*
+	dd if=/dev/zero of=out/portland.img bs=512 count=2880
+	dd if=part/portland.pfs of=out/portland.img conv=notrunc
 
 boot:
 	mkdir part
