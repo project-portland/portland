@@ -40,13 +40,13 @@ loop_i:
   cmp [0x8022], 'd'
   jne false_alarm
 
-  mov cl, dl
+  mov byte [0x7e00], dl
   xor dx, dx
   mov ax, [0x8018]
+  mov [0x7e02], ax
   dec ax
   div 512
   inc ax
-  mov dl, cl
   mov [dap_n_sectors], al
   inc qword [dap_sector]
 
